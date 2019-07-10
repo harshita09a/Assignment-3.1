@@ -1,0 +1,54 @@
+<h1>Product table</h1>
+<form #proForm=ngForm (ngSubmit)="addProduct()">
+    <table>
+        <tr>
+            <td> Product Id</td>
+            <td><input type="text" name="id" id="pid" [(ngModel)]= "proId" #idcontrol="ngModel" required/></td> 
+            <span *ngIf="idcontrol.touched && idcontrol.invalid">ID should be filled</span>
+        </tr>
+        <tr>
+            <td> Product Name</td>
+            <td><input type="text" name="nname" id="ename" [(ngModel)]="proName" #namecontrol="ngModel" required/></td>
+            <span *ngIf="namecontrol.touched && namecontrol.invalid">Name should be filled</span>
+        </tr>
+        <tr>
+            <td> Product Cost</td>
+            <td><input type="text" name="cost" id="ecost" [(ngModel)]="proCost" #costcontrol="ngModel" required /></td>
+            <span *ngIf="costcontrol.touched && costcontrol.invalid">Cost should be filled</span>
+        </tr>
+        <tr>
+            <td> Product Online</td>
+          
+            <td><input type="radio" name="online" id="eonline" value="Yes" [(ngModel)]="proOnline" #onlinecontrol="ngModel" required />Yes</td>
+            <td><input type="radio" name="online" id="eonline" value="No" [(ngModel)]="proOnline" #onlinecontrol="ngModel" required />No</td>
+            <span *ngIf="onlinecontrol.touched && onlinecontrol.invalid">One option should be selected</span>
+            
+        </tr>
+        <tr>
+            <td>Product Category</td>
+            <td>
+            <select id="ecategory" name="category" [(ngModel)]="proCategory" #categorycontrol="ngModel" required >
+                    <option value="Grocery">Grocery</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Cloth">Cloth</option>
+                  </select>
+                </td>
+            <span *ngIf="categorycontrol.touched && categorycontrol.invalid">Category should be filled</span>
+        </tr>
+        <tr>
+            <td> Available in Market</td>
+            
+                <td><input type ="checkbox"  name="proStore" value="BigBazar" [(ngModel)]="proStore1" #marketcontrol="ngModel"> BigBazar</td>
+                <td><input type ="checkbox" name="proStore" value="Dmart"[(ngModel)]="proStore2" #marketcontrol="ngModel" /> Dmart</td>
+                 <td><input type ="checkbox" name="proStore" value="Reliance"[(ngModel)]="proStore3" #marketcontrol="ngModel" /> Reliance</td>
+                 <td><input type ="checkbox" name="proStore" value="MegaStore"[(ngModel)]="proStore4" #marketcontrol="ngModel" /> MegaStore</td>
+        </tr>
+      
+        <tr>
+          <td><input type="submit" value="ADD Product"[disabled]="proForm.invalid" /></td>  
+        </tr>
+   
+</table>
+</form>
+<div> {{proId}} &nbsp;&nbsp;  {{proName}}  &nbsp;&nbsp; {{proCost}} &nbsp;&nbsp;   {{proCategory}} &nbsp;&nbsp;  {{proOnline}} &nbsp;&nbsp;{{proStore}}  </div>
